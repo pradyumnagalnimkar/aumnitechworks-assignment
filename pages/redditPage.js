@@ -20,7 +20,7 @@ export class RedditPage extends BasePage{
     async search(subreddit){
         await test.step(`Search for ${subreddit}`, async () => {
             await this.searchPostTextbox.fill(subreddit);
-            await this.page.keyboard.press("Enter");
+            await WebUtils.performKeyPress(this.page, "Enter");
         });
     }
 
