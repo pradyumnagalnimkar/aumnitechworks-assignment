@@ -11,8 +11,8 @@ export class GmailPage extends BasePage{
         this.table = this.page.locator('table[role="grid"]');
         this.replyButton = this.page.locator("div[aria-label='Reply']");
         this.messageBodyTextbox = this.page.locator("div[aria-label='Message Body']");
-        this.sendButton = this.page.getByText("Send");
-        this.messageSentText = this.page.locator("span:has-text('Message sent')");
+        this.sendButton = this.page.getByText("Send", {exact: true});
+        this.messageSentText = this.page.locator("span:text-is('Message sent')");
     }
 
     /**
