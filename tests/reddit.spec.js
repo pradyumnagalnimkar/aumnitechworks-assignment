@@ -19,7 +19,7 @@ test('Fetch titles and comments from a subreddit posr ', {
     let titleCount = 0;
     let commentCount = 0;
 
-    await redditPage.openApp();
+    await redditPage.loadApp();
     await redditPage.search(subreddit);
     await redditPage.loadPosts(50);
     postDetails = await redditPage.fetchPostDetails(40, 45);
@@ -27,7 +27,7 @@ test('Fetch titles and comments from a subreddit posr ', {
     for (const postDetail of postDetails) {
         titleCount++;
         commentCount++;
-        console.log(`Title: ${postDetail.title}, Comment: ${postDetail.comment} \n`);
+        console.log(`Post ${titleCount}\nTitle: ${postDetail.title}, Comment: ${postDetail.comment} \n`);
     }
     expect.soft(titleCount, `Title count is not 6`).toBe(6);
     expect.soft(commentCount, `Comment count is not 6`).toBe(6);
