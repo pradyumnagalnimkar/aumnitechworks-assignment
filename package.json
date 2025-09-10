@@ -1,0 +1,38 @@
+{
+  "name": "aumnitechworks-assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.3.1"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright test --reporter=html",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:basic": "playwright test tests/example.spec.js",
+    "test:todo": "playwright test tests-examples/demo-todo-app.spec.js",
+    "test:install": "playwright install",
+    "test:show-report": "playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pradyumnagalnimkar/aumnitechworks-assignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pradyumnagalnimkar/aumnitechworks-assignment/issues"
+  },
+  "homepage": "https://github.com/pradyumnagalnimkar/aumnitechworks-assignment#readme"
+}
