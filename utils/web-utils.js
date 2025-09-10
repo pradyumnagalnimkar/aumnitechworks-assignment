@@ -7,4 +7,12 @@ export class WebUtils {
     static async scrollToBottom(page) {
         await page.evaluate(() => window.scrollBy(0, window.innerHeight));
     }
+
+    /**
+     * @description - perform keyboard action
+     * @param {string} key - Keyboard key to press
+     */
+    static async performKeyPress(page, key) {
+        await page.keyboard.press(key);
+    }
 }
