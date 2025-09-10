@@ -5,7 +5,8 @@ import { WebUtils } from "../utils/web-utils.js";
 export class GmailPage extends BasePage{
     constructor(page){
         super(page);
-        this.url = "https://www.gmail.com";
+        // this.url = "https://www.gmail.com";
+        this.url = process.env.GMAIL_URL;   
         this.genericTextbox = (label) => this.page.locator(`input[aria-label='${label}']`);
         this.nextButton = this.page.getByText("Next");
         this.table = this.page.locator('table[role="grid"]');

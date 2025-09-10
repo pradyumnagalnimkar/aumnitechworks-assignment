@@ -34,5 +34,8 @@
   "bugs": {
     "url": "https://github.com/pradyumnagalnimkar/aumnitechworks-assignment/issues"
   },
-  "homepage": "https://github.com/pradyumnagalnimkar/aumnitechworks-assignment#readme"
+  "homepage": "https://github.com/pradyumnagalnimkar/aumnitechworks-assignment#readme",
+  "dependencies": {
+    "dotenv": "^17.2.2"
+  }
 }

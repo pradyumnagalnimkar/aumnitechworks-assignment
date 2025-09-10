@@ -5,7 +5,8 @@ import { WebUtils } from "../utils/web-utils.js";
 export class RedditPage extends BasePage{
     constructor(page){
         super(page);
-        this.url = "https://www.reddit.com/";
+        // this.url = "https://www.reddit.com/";
+        this.url = process.env.REDDIT_URL;
         this.searchPostTextbox = this.page.locator("reddit-search-large input[inputmode]");
         this.posts = this.page.locator("#main-content a[data-testid='post-title']")
         this.postTitleText = this.page.locator("#main-content a[data-testid='post-title-text']")

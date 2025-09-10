@@ -14,8 +14,8 @@ test('Gmail Login', {
 
     const gmailPage = new GmailPage(page);
 
-    const email = "testaumnitechworkuser@gmail.com";
-    const password = "testuser1234";
+    const email = process.env.GMAIL_EMAIL;
+    const password = process.env.GMAIL_PASSWORD;
     const subjectLine = "Test email: Check Reception";
     const replyMessage = "I accept the invitation to proceed to the next round";
 
