@@ -1,24 +1,16 @@
 import { test} from "@playwright/test";
+import { BasePage } from "../pages/basePage.js";
 import { WebUtils } from "../utils/web-utils.js";
 
-export class RedditPage {
+export class RedditPage extends BasePage{
     constructor(page){
-        this.page = page;
+        super(page);
         this.url = "https://www.reddit.com/";
         this.searchPostTextbox = this.page.locator("reddit-search-large input[autocomplete='off']");
         this.posts = this.page.locator("#main-content a[data-testid='post-title']")
         this.postTitleText = this.page.locator("#main-content a[data-testid='post-title-text']")
         this.postComments = this.page.locator("div[slot='comment'] div")
         this.backToPostsButton = this.page.locator("pdp-back-button button[aria-label='Back']")
-    }
-
-    /**
-     * @description - Navigate to the Reddit homepage
-     */
-    async openApp(){
-        await test.step(`Open Reddit`, async () => {
-            await this.page.goto(this.url);
-        });
     }
 
     /**
