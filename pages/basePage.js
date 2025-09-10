@@ -7,7 +7,7 @@ export class BasePage {
     /**
      * @description - Navigate to the application
      */
-    async openApp(){
+    async loadApp(){
         await this.page.goto(this.url);
     }
 }
