@@ -1,8 +1,11 @@
 import { test, expect } from "@playwright/test"
+import { RedditPage } from "../pages/redditPage.js";
 
 test('Fetch titles and comments from a subreddit posr ', {
     tag: ['@smoke', '@assignment']
 }, async ({ page }) => {
+
+
     // 1. Open the Reddit website.
     // 2. Navigate to a specific subreddit of your choice (e.g., r/learnprogramming).
     // 3. Fetch the titles of posts numbered 40th to 45th (inclusive) on the page.
@@ -10,19 +13,18 @@ test('Fetch titles and comments from a subreddit posr ', {
     // 5. Verify that exactly 6 titles and comments are fetched.
     // 6. Print the titles to the console and optionally validate their content.
     
+    const redditPage = new RedditPage(page);
+    const subreddit = "r/learnprogramming";
+    
     let postDetails = [];
     let titleCount = 0;
     let commentCount = 0;
     
-    await page.goto("https://www.reddit.com/");
-    await page.locator("reddit-search-large input[autocomplete='off']").fill("r/learnprogramming");
-    await page.keyboard.press("Enter");
-    
+    await redditPage.openApp();
+    await redditPage.search(subreddit);
+
     // Scroll until we have at least 46 posts loaded
-    while (await page.locator("#main-content a[data-testid='post-title']").count() < 46) {
-        await page.evaluate(() => window.scrollBy(0, window.innerHeight));
-        await page.waitForTimeout(1000);
-    }
+    await redditPage.loadPosts(46);
     
     // Extract posts 40-45 (6 posts total)
     for (let i = 40; i < 46; i++) {
