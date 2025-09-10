@@ -10,22 +10,40 @@ test('Fetch titles and comments from a subreddit posr ', {
     // 5. Verify that exactly 6 titles and comments are fetched.
     // 6. Print the titles to the console and optionally validate their content.
     
-    let fetchedTitles = []
-    let fetchedComments = []
+    let postDetails = [];
+    let titleCount = 0;
+    let commentCount = 0;
+    
     await page.goto("https://www.reddit.com/");
     await page.locator("reddit-search-large input[autocomplete='off']").fill("r/learnprogramming");
     await page.keyboard.press("Enter");
-    while(await page.locator("#main-content a[data-testid='post-title']").count() < 46){
+    
+    // Scroll until we have at least 46 posts loaded
+    while (await page.locator("#main-content a[data-testid='post-title']").count() < 46) {
         await page.evaluate(() => window.scrollBy(0, window.innerHeight));
         await page.waitForTimeout(1000);
     }
-    for(let i=40;i<46;i++){
-        fetchedTitles.push(await page.locator("#main-content a[data-testid='post-title']").nth(i).getAttribute("aria-label"));
-    }
-    console.log(actualTitles);
     
-
-
-    await page.pause();
-
-})
+    // Extract posts 40-45 (6 posts total)
+    for (let i = 40; i < 46; i++) {
+        let postDetail = {};
+        postDetail.title = await page.locator("#main-content a[data-testid='post-title-text']").nth(i).innerText();
+        await page.locator("#main-content a[data-testid='post-title']").nth(i).click();
+        await page.locator("div[slot='comment'] div").nth(0).waitFor();
+        
+        let commentText = await page.locator("div[slot='comment'] div").nth(0).innerText();
+        postDetail.comment = commentText.replace(/\n/g, " ").trim();
+        
+        postDetails.push(postDetail);
+        await page.locator("pdp-back-button button[aria-label='Back']").click();
+    }
+    
+    for (const postDetail of postDetails) {
+        titleCount++;
+        commentCount++;
+        console.log(`Title: ${postDetail.title}, Comment: ${postDetail.comment} \n`);
+    }
+    
+    expect(titleCount).toBe(6);
+    expect(commentCount).toBe(6);
+});
