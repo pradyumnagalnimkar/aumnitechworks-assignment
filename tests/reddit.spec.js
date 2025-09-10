@@ -27,7 +27,7 @@ test('Fetch titles and comments from a subreddit posr ', {
     for (const postDetail of postDetails) {
         titleCount++;
         commentCount++;
-        console.log(`Post ${titleCount}\nTitle: ${postDetail.title}, Comment: ${postDetail.comment} \n`);
+        console.log(`Post ${titleCount}\nTitle: ${postDetail.title},\n Comment: ${postDetail.comment} \n`);
     }
     expect.soft(titleCount, `Title count is not 6`).toBe(6);
     expect.soft(commentCount, `Comment count is not 6`).toBe(6);
