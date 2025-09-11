@@ -1,11 +1,5 @@
 # Getting Started
 
-## Prerequisites
-
-- **Node.js**: Version 16 or higher
-- **npm**: Comes with Node.js
-- **Git**: For cloning the repository
-
 ## Quick Setup
 
 ### 1. Clone the Repository
@@ -25,7 +19,7 @@ npx playwright install
 ```
 
 ### 4. Configure Environment
-Create `config/test.env` file with your credentials:
+Create `test.env` file at root level with credentials provided over email:
 ```env
 REDDIT_URL=https://www.reddit.com/
 GMAIL_URL=https://www.gmail.com/
@@ -80,10 +74,18 @@ aumnitechworks-assignment/
 
 ## Usage
 
-1. **Configure credentials** in `config/test.env`
+1. **Configure credentials** in `test.env`
 2. **Run specific tests**:
    ```bash
    npx playwright test tests/reddit.spec.js
    npx playwright test tests/gmail.spec.js
    ```
 3. **View results** in HTML report or console output
+
+## Areas to Improve
+
+1. **Browser Initialization**: Implement singleton pattern in base class for browser creation to avoid multiple config imports
+2. **Storage State Management**: Check for existing state.json file before login - use if exists, create new if not
+3. **CI/CD Integration**: 
+   - Add custom reports (Allure), utility methods to attach screenshots, videos, traces & logs to reports and test steps
+   - Create Jenkinsfile for automated CI execution pipeline
