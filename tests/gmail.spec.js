@@ -26,5 +26,6 @@ test('Gmail Login', {
     await gmailPage.waitForInbox();
     await gmailPage.openEmail();
     await gmailPage.sendReply(replyMessage);    
+    await gmailPage.messageSentText.waitFor({ state: "visible" });
     await expect.soft(gmailPage.messageSentText).toBeVisible();
 });

@@ -65,6 +65,7 @@ export class GmailPage extends BasePage{
      */
     async searchMail(subjectLine){
         await test.step(`Search for ${subjectLine}`, async () => {
+            await this.genericTextbox.waitFor();
             await this.genericTextbox("Search mail").fill(subjectLine);
             await WebUtils.performKeyPress(this.page, "Enter");
         });
@@ -75,7 +76,7 @@ export class GmailPage extends BasePage{
      */
     async waitForInbox(){
         await test.step(`Wait for results to load`, async () => {
-            await this.table.last().waitFor({ state: "visible" });
+            await this.table.last().waitFor();
         });
     }
 
@@ -105,6 +106,7 @@ export class GmailPage extends BasePage{
      */
     async setReplyMessage(message){
         await test.step(`Set the reply message`, async () => {
+            await this.messageBodyTextbox.waitFor();
             await this.messageBodyTextbox.fill(message);
         });
     }
