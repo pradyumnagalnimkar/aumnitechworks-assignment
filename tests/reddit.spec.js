@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test"
 import { RedditPage } from "../pages/redditPage.js";
 
-test('Fetch titles and comments from a subreddit posr ', {
+test('Verify titles and comments are fetched from a subreddit post', {
     tag: ['@smoke', '@assignment']
 }, async ({ page }) => {
 

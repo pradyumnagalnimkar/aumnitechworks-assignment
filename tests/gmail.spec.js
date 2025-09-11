@@ -1,7 +1,8 @@
 import { test, expect } from "@playwright/test";
 import { GmailPage } from "../pages/gmailPage.js";
 
-test('Gmail Login', {
+
+test('Verify reply to email is working on gmail', {
     tag: ['@smoke', '@assignment']
 }, async ({ page }) => {
 
@@ -18,7 +19,6 @@ test('Gmail Login', {
     const password = process.env.GMAIL_PASSWORD;
     const subjectLine = "Test email: Check Reception";
     const replyMessage = "I accept the invitation to proceed to the next round";
-
 
     await gmailPage.loadApp();
     await gmailPage.login(email, password);

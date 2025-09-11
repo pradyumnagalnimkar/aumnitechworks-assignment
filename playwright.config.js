@@ -48,6 +48,7 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     video: 'on-first-retry',
     trace: 'on-first-retry',
+    storageState: 'auth-state.json',
   },
 
   /* Configure projects for major browsers */
