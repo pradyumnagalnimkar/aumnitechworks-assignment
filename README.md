@@ -42,6 +42,14 @@ npx playwright test tests/reddit.spec.js
 npx playwright show-report
 ```
 
+
+## Assignment Execution Video
+https://drive.google.com/file/d/1_234567890/view?usp=sharing
+
+## Assignment Report
+zip folder with name `assignment-report.zip` is present in root level.
+To open the report, unzip the folder and open the `index.html` file in your browser.
+
 ## Project Structure
 
 ```
