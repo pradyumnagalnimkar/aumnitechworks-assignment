@@ -7,6 +7,7 @@ export class GmailPage extends BasePage{
         super(page);
         this.url = process.env.GMAIL_URL;   
         this.genericTextbox = (label) => this.page.locator(`input[aria-label='${label}']`);
+        this.signInButton = this.page.getByRole('link', { name: 'Open the Sign into Gmail page' })
         this.nextButton = this.page.getByText("Next");
         this.table = this.page.locator('table[role="grid"]');
         this.replyButton = this.page.locator("div[aria-label='Reply']");
@@ -129,6 +130,27 @@ export class GmailPage extends BasePage{
             await this.clickOnReply();
             await this.setReplyMessage(message);
             await this.clickOnSend();
+        });
+    }
+
+    /**
+     * @description - Click on the sign in button
+     */
+    async checkOnSignInButton(){
+        return await test.step(`Check on the sign in button`, async () => {
+            if(await this.signInButton.count() > 0 ){
+                return true;
+            }
+            return false;
+        });
+    }
+
+    /**
+     * @description - Click on the sign in button
+     */
+    async clickOnSignIn(){
+        await test.step(`Click on the sign in button`, async () => {
+            await this.signInButton.click();
         });
     }
 }

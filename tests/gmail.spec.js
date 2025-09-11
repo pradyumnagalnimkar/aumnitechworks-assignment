@@ -21,6 +21,9 @@ test('Verify reply to email is working on gmail', {
     const replyMessage = "I accept the invitation to proceed to the next round";
 
     await gmailPage.loadApp();
+    if(await gmailPage.checkOnSignInButton()){
+        await gmailPage.clickOnSignIn();
+    };
     await gmailPage.login(email, password);
     await gmailPage.searchMail(subjectLine);
     await gmailPage.waitForInbox();

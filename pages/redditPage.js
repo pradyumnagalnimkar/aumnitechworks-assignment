@@ -6,7 +6,7 @@ export class RedditPage extends BasePage{
     constructor(page){
         super(page);
         this.url = process.env.REDDIT_URL;
-        this.searchPostTextbox = this.page.locator("reddit-search-large input[inputmode]");
+        this.searchPostTextbox = this.page.locator("reddit-search-large input[inputmode]").first();
         this.posts = this.page.locator("#main-content a[data-testid='post-title']")
         this.postTitleText = this.page.locator("#main-content a[data-testid='post-title-text']")
         this.postComments = this.page.locator("div[slot='comment'] div")
@@ -49,7 +49,7 @@ export class RedditPage extends BasePage{
                 let postDetail = {};
                 postDetail.title = await this.postTitleText.nth(i).innerText();
                 await this.posts.nth(i).click();
-                await this.postComments.nth(0).waitFor();
+                // await this.postComments.nth(0).waitFor();
                 let commentText = await this.postComments.nth(0).innerText();
                 postDetail.comment = commentText.replace(/\n/g, " ").trim();
                 postDetails.push(postDetail);
