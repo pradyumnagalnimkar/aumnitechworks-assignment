@@ -17,7 +17,7 @@ import path from 'path';
  * https://github.com/motdotla/dotenv
  */
 dotenv.config({
-  path: path.resolve(__dirname, `./config/test.env`),
+  path: path.resolve(__dirname, `test.env`),
   override: true,
 });
 
